@@ -18,6 +18,7 @@ parser.read('credentials.txt')
 username = parser.get('creds', 'username')
 password = parser.get('creds', 'password')
 
+
 def get_list_of_users():
     wb = openpyxl.load_workbook(excel_file_path)
     sheet = wb.active
@@ -63,24 +64,28 @@ def login():
     time.sleep(10)
 
 
-def dm_follower(follower):
-    url = 'https://www.instagram.com/' + follower
-    chrome.get(url)
+def go_to_messages():
+    chrome.get('https://www.instagram.com/direct/inbox/')
 
     time.sleep(5)
 
-    try:
-        message_button = chrome.find_element(By.XPATH, "//*[text()='Message']")
-        message_button.click()
+    not_now_button = chrome.find_element(By.CLASS_NAME, "_a9--")
+    not_now_button.click()
 
-    except selenium.common.exceptions.NoSuchElementException:
-        follow_button = chrome.find_element(By.XPATH, "//*[text()='Follow Back']")
-        follow_button.click()
+    time.sleep(5)
 
-        time.sleep(5)
 
-        message_button = chrome.find_element(By.XPATH, "//*[text()='Message']")
-        message_button.click()
+def dm_user(user_name):
+    dm_button = chrome.find_element(By.CLASS_NAME, "x78zum5 xdt5ytf x1n2onr6 x1ja2u2z")
+    dm_button.click()
+
+    search_box = chrome.find_element("name", "queryBox")
+    search_box.send_keys(user_name)
+
+    time.sleep(5)
+
+    user_photo = chrome.find_element('alt', user_name)
+    user_photo.click()
 
     time.sleep(5)
 
@@ -89,7 +94,8 @@ followers = get_list_of_users()
 
 initiate_chrome()
 login()
-dm_follower(followers[0])
+go_to_messages()
+dm_user(followers[0])
 
 
 
