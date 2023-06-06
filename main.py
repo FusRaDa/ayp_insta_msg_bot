@@ -35,7 +35,10 @@ def get_list_of_users():
 
 
 # declare global webdriver variable
-chrome = webdriver.Chrome()
+chrome_options = webdriver.ChromeOptions()
+prefs = {"profile.default_content_setting_values.notifications": 2}
+chrome_options.add_experimental_option("prefs", prefs)
+chrome = webdriver.Chrome(options=chrome_options)
 
 
 # go to instagram - initiate browser
@@ -69,21 +72,19 @@ def go_to_messages():
 
     time.sleep(5)
 
-    not_now_button = chrome.find_element(By.CLASS_NAME, "_a9--")
-    not_now_button.click()
+
+def dm_user(user_name):
+    dm_button = chrome.find_element(By.XPATH, "//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x78zum5 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha']")
+    dm_button.click()
 
     time.sleep(5)
 
-
-def dm_user(user_name):
-    dm_button = chrome.find_element(By.CLASS_NAME, "x78zum5 xdt5ytf x1n2onr6 x1ja2u2z")
-    dm_button.click()
-
-    search_box = chrome.find_element("name", "queryBox")
+    search_box = chrome.find_element(By.CSS_SELECTOR, '[name="queryBox"]')
     search_box.send_keys(user_name)
 
     time.sleep(5)
 
+    # start work here
     user_photo = chrome.find_element('alt', user_name)
     user_photo.click()
 
