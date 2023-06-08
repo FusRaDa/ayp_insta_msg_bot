@@ -88,6 +88,10 @@ def go_to_messages():
 
 
 def dm_user(user_name, full_name, message):
+
+    if full_name is None:
+        full_name = "there"
+
     dm_button = chrome.find_element(By.XPATH,
                                     "//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r "
                                     "x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x78zum5 "
