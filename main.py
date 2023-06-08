@@ -87,9 +87,6 @@ def go_to_messages():
     time.sleep(5)
 
 
-failed_to_send = []
-
-
 def dm_user(user_name, full_name, message):
     dm_button = chrome.find_element(By.XPATH,
                                     "//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r "
@@ -114,6 +111,8 @@ def dm_user(user_name, full_name, message):
         if user.text == user_name:
             user.click()
             break
+        else:
+            return
 
     time.sleep(10)
 
