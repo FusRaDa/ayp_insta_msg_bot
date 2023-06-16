@@ -80,10 +80,7 @@ def dm_user(user_name, message):
     try:
 
         dm_button = chrome.find_element(By.XPATH,
-                                        "//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r "
-                                        "x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 x78zum5 "
-                                        "xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk xl56j7k x1y1aw1k x1sxyh0 "
-                                        "xwib8y2 xurb0ha']")
+                                        "//div[@class='x78zum5']")
         dm_button.click()
 
         time.sleep(10)
@@ -98,21 +95,17 @@ def dm_user(user_name, message):
                                             "//span[@class='x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj']")
 
         for user in user_results:
-            print(user.text)
             if user.text == user_name:
+                print(user.text)
                 user.click()
                 break
 
         time.sleep(10)
 
         chat_button = chrome.find_element(By.XPATH,
-                                          "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w x972fbf xcfux6l "
-                                          "x1qhh985 xm0m39n xdl72j9 x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r "
-                                          "x2lwn1j xeuugli xexx8yu x18d9i69 x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np "
-                                          "x1lku1pv x1a2a7pz x6s0dn4 xjyslct x1lq5wgf xgqcy7u x30kzoy x9jhf4c x1ejq31n "
-                                          "xd10rxx x1sy0etr x17r0tee x9f619 x1ypdohk x78zum5 x1i0vuye xwhw2v2 xl56j7k "
-                                          "x17ydfre x1f6kntn x2b8uid xlyipyv x87ps6o x14atkfc x9bdzbf x1n2onr6 x1d5wrs8 "
-                                          "xn3w4p2 x5ib6vp xc73u3c x1tu34mt xzloghq']")
+                                          "//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh "
+                                          "xw7yly9 xktsk01 x1yztbdb x1d52u69 x1uhb9sk x1plvlek xryxfnj x1c4vz4f "
+                                          "x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")
         chat_button.click()
 
         time.sleep(10)
@@ -123,15 +116,7 @@ def dm_user(user_name, message):
 
         time.sleep(10)
 
-        send_button = chrome.find_element(By.XPATH,
-                                          "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w xdl72j9 x2lah0s xe8uvvx "
-                                          "xdj266r xat24cr x1mh8g0r x2lwn1j xeuugli x1hl2dhg xggy1nq x1ja2u2z x1t137rt "
-                                          "x1q0g3np x1lku1pv x1a2a7pz x6s0dn4 xjyslct x1ejq31n xd10rxx x1sy0etr x17r0tee "
-                                          "x9f619 x1ypdohk x1i0vuye xwhw2v2 xl56j7k x17ydfre x1f6kntn x2b8uid xlyipyv "
-                                          "x87ps6o x14atkfc x1d5wrs8 x972fbf xcfux6l x1qhh985 xm0m39n xm3z3ea x1x8b98j "
-                                          "x131883w x16mih1h xt0psk2 xt7dq6l xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 "
-                                          "xjbqb8w x1n5bzlp x173jzuc x1yc6y37 xfs2ol5']")
-        send_button.click()
+        message_box.send_keys(Keys.ENTER)
 
         print(user_name + " has been messaged.")
 
@@ -140,6 +125,8 @@ def dm_user(user_name, message):
         time.sleep(random.randint(180, 300))
 
     except selenium.common.exceptions.NoSuchElementException:
+
+        print("User not found - go to next user")
 
         exit_button = chrome.find_element(By.XPATH,
                                           "//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh "
