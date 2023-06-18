@@ -76,7 +76,6 @@ def go_to_messages():
 
 
 def dm_user(user_name, message):
-
     try:
 
         dm_button = chrome.find_element(By.XPATH,
@@ -108,7 +107,31 @@ def dm_user(user_name, message):
                                           "x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")
         chat_button.click()
 
-        time.sleep(10)
+        time.sleep(5)
+
+        accept_button = chrome.find_element(By.XPATH, "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w xdl72j9 "
+                                                      "x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j "
+                                                      "xeuugli x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x1lku1pv "
+                                                      "x1a2a7pz x6s0dn4 xjyslct x1ejq31n xd10rxx x1sy0etr x17r0tee "
+                                                      "x9f619 x1ypdohk x1i0vuye x1f6kntn xwhw2v2 xl56j7k x17ydfre "
+                                                      "x2b8uid xlyipyv x87ps6o x14atkfc x1d5wrs8 xjbqb8w xm3z3ea "
+                                                      "x1x8b98j x131883w x16mih1h x972fbf xcfux6l x1qhh985 xm0m39n "
+                                                      "xt0psk2 xt7dq6l xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 "
+                                                      "x1n5bzlp xqnirrm xj34u2y']")
+
+        if accept_button.is_displayed():
+            print("message request accepted from " + user_name)
+            accept_button.click()
+
+            time.sleep(2)
+
+            general_button = chrome.find_element(By.XPATH, "//button[@class='xjbqb8w xaqea5y x1b1mbwd xav7gou xtuw4uo "
+                                                           "x1ypdohk xvs91rp x1evy7pa xdj266r x11i5rnm xat24cr "
+                                                           "x1mh8g0r x1wxaq2x x1iorvi4 x1sxyh0 xjkvuk6 xurb0ha "
+                                                           "x2b8uid x87ps6o xxymvpz xh8yej3 x52vrxo x4gyw5p x5n08af']")
+            general_button.click()
+
+        time.sleep(3)
 
         pyperclip.copy(message)
         message_box = chrome.find_element(By.XPATH, "//p[@class='xat24cr xdj266r']")
@@ -139,27 +162,25 @@ def dm_user(user_name, message):
 
 followers = get_list_of_user_names()
 
-
 initiate_chrome()
 login()
 go_to_messages()
 
-
 message_var = {
 
-    1:"Hey! Have you secured your spot for the upcoming AYP Convention? Don’t miss out on this incredible opportunity because ticket prices will increase on July 1. \n\n"
-      "🔗 Visit AYP.me/Convention to discover why this event is a must-attend. If you have any questions or need support with scholarship funding to make attending possible, feel free to DM us. \n\n"
-      "🎁 As a special incentive, if you register within the next 24 hours & choose “Social Media Platform” as your referral source, we’ll gift you a FREE AYP hoodie! This exclusive offer cannot be combined with other referrals or discount codes. \n\n" 
-      "Don’t wait any longer – secure your spot now and join us at the AYP Convention! We look forward to seeing you there.",
+    1: "Hey! Have you secured your spot for the upcoming AYP Convention? Don’t miss out on this incredible opportunity because ticket prices will increase on July 1. \n\n"
+       "🔗 Visit AYP.me/Convention to discover why this event is a must-attend. If you have any questions or need support with scholarship funding to make attending possible, feel free to DM us. \n\n"
+       "🎁 As a special incentive, if you register within the next 24 hours & choose “Social Media Platform” as your referral source, we’ll gift you a FREE AYP hoodie! This exclusive offer cannot be combined with other referrals or discount codes. \n\n"
+       "Don’t wait any longer – secure your spot now and join us at the AYP Convention! We look forward to seeing you there.",
 
-    2:"Hey! Have you heard about the amazing AYP Convention coming up in just over a month? 🎉 Time is running out, as ticket prices will increase on July 1st. \n\n"
-      "To learn more about why the AYP Convention is an absolute must-attend, visit AYP.me/Convention. If you have any questions or need support with scholarship funding to make attending possible, please feel free to send us a DM. We’re here to help! \n\n"
-      "But wait, there’s more! 🎁 If you register within the next 24 hours and choose “Social Media Platform” as your referral source, you’ll receive a FREE AYP hoodie as a token of our appreciation. This offer can’t be combined with other referrals or discount codes. \n\n"
-      "Don’t wait any longer—secure your spot today and get ready for an unforgettable experience at the AYP Convention. See you there!",
+    2: "Hey! Have you heard about the amazing AYP Convention coming up in just over a month? 🎉 Time is running out, as ticket prices will increase on July 1st. \n\n"
+       "To learn more about why the AYP Convention is an absolute must-attend, visit AYP.me/Convention. If you have any questions or need support with scholarship funding to make attending possible, please feel free to send us a DM. We’re here to help! \n\n"
+       "But wait, there’s more! 🎁 If you register within the next 24 hours and choose “Social Media Platform” as your referral source, you’ll receive a FREE AYP hoodie as a token of our appreciation. This offer can’t be combined with other referrals or discount codes. \n\n"
+       "Don’t wait any longer—secure your spot today and get ready for an unforgettable experience at the AYP Convention. See you there!",
 
-    3:"Have you signed up for the AYP Convention happening next month? If not, don’t wait, because ticket prices go up on July 1. \n\n"
-      "Visit AYP.me/Convention to learn more about why this is an event you do not want to miss, and DM us if you have questions or if you need scholarship funding support to make it possible for you to attend. \n\n"
-      "As a special prize, if you register in the next 24 hours and select “Social Media Platform” when asked how you heard about the convention, we’ll give you a FREE AYP hoodie! This offer isn’t combinable with other referrals/discount codes."
+    3: "Have you signed up for the AYP Convention happening next month? If not, don’t wait, because ticket prices go up on July 1. \n\n"
+       "Visit AYP.me/Convention to learn more about why this is an event you do not want to miss, and DM us if you have questions or if you need scholarship funding support to make it possible for you to attend. \n\n"
+       "As a special prize, if you register in the next 24 hours and select “Social Media Platform” when asked how you heard about the convention, we’ll give you a FREE AYP hoodie! This offer isn’t combinable with other referrals/discount codes."
 
 }
 
