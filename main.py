@@ -107,7 +107,7 @@ def dm_user(user_name, message):
                                           "x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")
         chat_button.click()
 
-        time.sleep(5)
+        time.sleep(10)
 
         accept_button = chrome.find_element(By.XPATH, "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w xdl72j9 "
                                                       "x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j "
@@ -123,7 +123,7 @@ def dm_user(user_name, message):
             print("message request accepted from " + user_name)
             accept_button.click()
 
-            time.sleep(2)
+            time.sleep(5)
 
             general_button = chrome.find_element(By.XPATH, "//button[@class='xjbqb8w xaqea5y x1b1mbwd xav7gou xtuw4uo "
                                                            "x1ypdohk xvs91rp x1evy7pa xdj266r x11i5rnm xat24cr "
@@ -131,7 +131,9 @@ def dm_user(user_name, message):
                                                            "x2b8uid x87ps6o xxymvpz xh8yej3 x52vrxo x4gyw5p x5n08af']")
             general_button.click()
 
-        time.sleep(3)
+            time.sleep(5)
+        else:
+            time.sleep(10)
 
         pyperclip.copy(message)
         message_box = chrome.find_element(By.XPATH, "//p[@class='xat24cr xdj266r']")
