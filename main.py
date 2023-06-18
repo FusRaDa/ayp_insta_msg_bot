@@ -76,26 +76,28 @@ def go_to_messages():
 
 
 def dm_user(user_name, message):
+
+    dm_button = chrome.find_element(By.XPATH,
+                                    "//div[@class='x78zum5']")
+    dm_button.click()
+
+    time.sleep(10)
+
+    search_box = chrome.find_element(By.CSS_SELECTOR, '[name="queryBox"]')
+    search_box.send_keys(user_name)
+
+    time.sleep(10)
+
+    # select user
+    user_results = chrome.find_elements(By.XPATH,
+                                        "//span[@class='x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw "
+                                        "x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x "
+                                        "x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj']")
+
     try:
-
-        dm_button = chrome.find_element(By.XPATH,
-                                        "//div[@class='x78zum5']")
-        dm_button.click()
-
-        time.sleep(10)
-
-        search_box = chrome.find_element(By.CSS_SELECTOR, '[name="queryBox"]')
-        search_box.send_keys(user_name)
-
-        time.sleep(10)
-
-        # select user
-        user_results = chrome.find_elements(By.XPATH,
-                                            "//span[@class='x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj']")
-
         for user in user_results:
             if user.text == user_name:
-                print(user.text)
+                print(user.text + " user has been found")
                 user.click()
                 break
 
@@ -109,16 +111,18 @@ def dm_user(user_name, message):
 
         time.sleep(10)
 
+        # insert prompt func here
         try:
-            accept_button = chrome.find_element(By.XPATH, "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w xdl72j9 "
-                                                          "x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j "
-                                                          "xeuugli x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x1lku1pv "
-                                                          "x1a2a7pz x6s0dn4 xjyslct x1ejq31n xd10rxx x1sy0etr x17r0tee "
-                                                          "x9f619 x1ypdohk x1i0vuye x1f6kntn xwhw2v2 xl56j7k x17ydfre "
-                                                          "x2b8uid xlyipyv x87ps6o x14atkfc x1d5wrs8 xjbqb8w xm3z3ea "
-                                                          "x1x8b98j x131883w x16mih1h x972fbf xcfux6l x1qhh985 xm0m39n "
-                                                          "xt0psk2 xt7dq6l xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 "
-                                                          "x1n5bzlp xqnirrm xj34u2y']")
+            accept_button = chrome.find_element(By.XPATH,
+                                                "//div[@class='x1i10hfl xjqpnuy xa49m3k xqeqjp1 x2hbi6w xdl72j9 "
+                                                "x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j "
+                                                "xeuugli x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x1lku1pv "
+                                                "x1a2a7pz x6s0dn4 xjyslct x1ejq31n xd10rxx x1sy0etr x17r0tee "
+                                                "x9f619 x1ypdohk x1i0vuye x1f6kntn xwhw2v2 xl56j7k x17ydfre "
+                                                "x2b8uid xlyipyv x87ps6o x14atkfc x1d5wrs8 xjbqb8w xm3z3ea "
+                                                "x1x8b98j x131883w x16mih1h x972fbf xcfux6l x1qhh985 xm0m39n "
+                                                "xt0psk2 xt7dq6l xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 "
+                                                "x1n5bzlp xqnirrm xj34u2y']")
             print("message request accepted from " + user_name)
             accept_button.click()
 
@@ -135,6 +139,7 @@ def dm_user(user_name, message):
         except selenium.common.exceptions.NoSuchElementException:
             time.sleep(10)
 
+        # continue to send message
         pyperclip.copy(message)
         message_box = chrome.find_element(By.XPATH, "//p[@class='xat24cr xdj266r']")
         message_box.send_keys(Keys.CONTROL, "v")
