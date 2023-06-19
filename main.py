@@ -77,6 +77,8 @@ def go_to_messages():
 
 def dm_user(user_name, message):
 
+    user_found = False
+
     dm_button = chrome.find_element(By.XPATH,
                                     "//div[@class='x78zum5']")
     dm_button.click()
@@ -94,12 +96,24 @@ def dm_user(user_name, message):
                                         "x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x "
                                         "x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj']")
 
-    try:
-        for user in user_results:
-            if user.text == user_name:
-                print(user.text + " user has been found")
-                user.click()
-                break
+    for user in user_results:
+        if user.text == user_name:
+            user_found = True
+            print(user.text + " user has been found")
+            user.click()
+            break
+
+    if not user_found:
+        print(user_name + " not found - go to next user")
+        exit_button = chrome.find_element(By.XPATH,
+                                          "//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh "
+                                          "xyamay9 x1pi30zi x1l90r2v x1swvt13 x1uhb9sk x1plvlek xryxfnj x1c4vz4f "
+                                          "x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")
+        exit_button.click()
+
+        time.sleep(10)
+
+    else:
 
         time.sleep(10)
 
@@ -150,21 +164,7 @@ def dm_user(user_name, message):
 
         print(user_name + " has been messaged.")
 
-        time.sleep(20)
-
         time.sleep(random.randint(180, 300))
-
-    except selenium.common.exceptions.NoSuchElementException:
-
-        print("User not found - go to next user")
-
-        exit_button = chrome.find_element(By.XPATH,
-                                          "//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh "
-                                          "xyamay9 x1pi30zi x1l90r2v x1swvt13 x1uhb9sk x1plvlek xryxfnj x1c4vz4f "
-                                          "x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")
-        exit_button.click()
-
-        time.sleep(10)
 
 
 followers = get_list_of_user_names()
