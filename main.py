@@ -190,17 +190,17 @@ go_to_messages()
 
 message_var = {
 
-    1: "Hey! Have you secured your spot for the upcoming AYP Convention? Don’t miss out on this incredible opportunity because ticket prices will increase July 1! \n\n"
+    1: "Hey! Have you secured your spot for the upcoming AYP Convention? Don’t miss out on this incredible opportunity! \n\n"
        "🔗 Visit AYP.me/Convention to discover why this event is a must-attend. If you have any questions or need support with scholarship funding to make attending possible, feel free to DM us. \n\n"
        "🎁 As a special incentive, if you register within the next 24 hours & choose “Social Media Platform” as your referral source, we’ll gift you a FREE AYP hoodie! This exclusive offer cannot be combined with other referrals or discount codes. \n\n"
        "Don’t wait any longer – secure your spot now and join us at the AYP Convention! We look forward to seeing you there.",
 
-    2: "Hey! Have you heard about the amazing AYP Convention coming up in under a month? 🎉 Time is running out, as ticket prices will increase on July 1st. \n\n"
+    2: "Hey! Have you heard about the amazing AYP Convention coming up in under a month? 🎉 Time is running out, as the event is just a few weeks away. \n\n"
        "To learn more about why the AYP Convention is an absolute must-attend, visit AYP.me/Convention. If you have any questions or need support with scholarship funding to make attending possible, please feel free to send us a DM. We’re here to help! \n\n"
        "But wait, there’s more! 🎁 If you register within the next 24 hours and choose “Social Media Platform” as your referral source, you’ll receive a FREE AYP hoodie as a token of our appreciation. This offer can’t be combined with other referrals or discount codes. \n\n"
        "Don’t wait any longer—secure your spot today and get ready for an unforgettable experience at the AYP Convention. See you there!",
 
-    3: "Have you signed up for the AYP Convention happening non just a few weeks? If not, don’t wait, because ticket prices go up on July 1. \n\n"
+    3: "Have you signed up for the AYP Convention happening non just a few weeks? If not, don’t wait, because we are just a few weeks away from the event. \n\n"
        "Visit AYP.me/Convention to learn more about why this is an event you do not want to miss, and DM us if you have questions or if you need scholarship funding support to make it possible for you to attend. \n\n"
        "As a special prize, if you register in the next 24 hours and select “Social Media Platform” when asked how you heard about the convention, we’ll give you a FREE AYP hoodie! This offer isn’t combinable with other referrals/discount codes."
 
