@@ -13,7 +13,6 @@ import csv
 # https://www.youtube.com/watch?v=Xjv1sY630Uc&list=PLzMcBGfZo4-n40rB1XaJ0ak1bemvlqumQ
 
 test_file = "ftlwebdev-6-4-23.xlsx"
-ayp_file = "ayp-6-4-23.xlsx"
 
 file_path = 'C:\\Users\\FusRada\\Desktop\\' + test_file
 
@@ -34,7 +33,11 @@ def get_list_of_user_names_csv():
             username_list.append(row[1])
 
     # remove column heading
-    return username_list.pop(0)
+    username_list.pop(0)
+
+    res = [*set(username_list)]
+
+    return res
 
 
 def get_list_of_user_names_excel():
@@ -48,8 +51,13 @@ def get_list_of_user_names_excel():
     for i in range(1, len(username_column)):
         username_list.append(username_column[i].value)
 
-    print(username_list)
-    return username_list
+    print(len(username_list))
+
+    res = [*set(username_list)]
+
+    print(len(res))
+
+    return res
 
 
 # declare global webdriver variable and turn off notifications
@@ -182,6 +190,8 @@ def dm_user(user_name, message):
         time.sleep(random.randint(180, 300))
 
 
+get_list_of_user_names_excel()
+
 followers = get_list_of_user_names_excel()
 
 initiate_chrome()
@@ -206,11 +216,17 @@ message_var = {
 
 }
 
-y = 1
+single_message = "Hey! Do you have a passion for reading books and want to make money online? Watch this free " \
+                 "tutorial on how to build a book blog in 30 minutes as well as learn about affiliate marketing and " \
+                 "SEO. Visit: ftlwebdev.com/book-blog "
+
+# y = 1
 for x in range(len(followers)):
 
-    if y == (len(message_var) + 1):
-        y = 1
+    # if y == (len(message_var) + 1):
+    #     y = 1
+    #
+    # dm_user(followers[x], message_var.get(y))
+    # y += 1
 
-    dm_user(followers[x], message_var.get(y))
-    y += 1
+    dm_user(followers[x], single_message)
